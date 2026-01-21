@@ -2,8 +2,8 @@
 
 import UseStateCounter from '@/components/UseStateCounter';
 import UseEffectDemo from '@/components/UseEffectDemo';
-import UseEffectTimer from '@/components/UseEffectTimer';
 import UseEffectPatterns from '@/components/UseEffectPatterns';
+import UseEffectUsers from '@/components/UseEffectUsers';
 
 export default function Home() {
   return (

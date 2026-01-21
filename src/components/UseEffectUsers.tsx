@@ -7,7 +7,7 @@ type User = {
   name: string;
 };
 
-export default function UseEffectTimer() {
+export default function UseEffectUsers() {
   const [users, setUsers] = useState<User[]>([
     { id: 1, name: 'Rahul' },
     { id: 2, name: 'Anita' },
@@ -47,7 +47,7 @@ export default function UseEffectTimer() {
             value={newUser}
             placeholder="Enter user name"
             onChange={(e) => setNewUser(e.target.value)}
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-3 py-2 border text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button 
             onClick={addUser}
