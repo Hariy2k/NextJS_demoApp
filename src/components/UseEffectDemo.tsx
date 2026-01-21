@@ -15,11 +15,16 @@ export default function UseEffectDemo() {
 
   // useEffect for window size tracking
   useEffect(() => {
+    console.log('Window resize effect mounted');
+    
     const handleResize = () => {
-      setWindowSize({
+      const newSize = {
         width: window.innerWidth,
         height: window.innerHeight
-      });
+      };
+      setWindowSize(newSize);
+      console.log('Window size changed:', newSize);
+      console.log(`Width: ${newSize.width}px, Height: ${newSize.height}px`);
     };
 
     // Set initial size
@@ -27,35 +32,13 @@ export default function UseEffectDemo() {
 
     // Add event listener
     window.addEventListener('resize', handleResize);
+    console.log('Resize event listener added');
 
     // Cleanup - remove event listener
-    return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty dependency array - runs only once
-
-  // useEffect for API data fetching
-  useEffect(() => {
-    const fetchUsers = async () => {
-      setLoading(true);
-      try {
-        // Simulate API call with dummy data
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        const dummyUsers: User[] = [
-          { id: 1, name: 'John Doe', email: 'john@example.com' },
-          { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-          { id: 3, name: 'Bob Johnson', email: 'bob@example.com' },
-          { id: 4, name: 'Alice Brown', email: 'alice@example.com' }
-        ];
-        
-        setUsers(dummyUsers);
-      } catch (error) {
-        console.error('Error fetching users:', error);
-      } finally {
-        setLoading(false);
-      }
+    return () => {
+      console.log('Cleaning up resize event listener');
+      window.removeEventListener('resize', handleResize);
     };
-
-    fetchUsers();
   }, []); // Empty dependency array - runs only once
 
   return (
@@ -76,23 +59,6 @@ export default function UseEffectDemo() {
           </div>
         </div>
         <p className="text-sm text-gray-600 mt-2">Resize window to see useEffect in action</p>
-      </div>
-
-      {/* API Data Display */}
-      <div className="p-4 bg-green-50 rounded">
-        <h3 className="font-semibold mb-2 text-green-800">User List (from API)</h3>
-        {loading ? (
-          <p className="text-gray-600">Loading users...</p>
-        ) : (
-          <div className="space-y-2">
-            {users.map(user => (
-              <div key={user.id} className="p-2 bg-white rounded border border-gray-200">
-                <div className="font-medium text-gray-800">{user.name}</div>
-                <div className="text-sm text-gray-600">{user.email}</div>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="mt-6 p-4 bg-gray-50 rounded text-sm text-gray-700">

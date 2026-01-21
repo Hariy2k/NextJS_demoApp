@@ -3,6 +3,7 @@
 import UseStateCounter from '@/components/UseStateCounter';
 import UseEffectDemo from '@/components/UseEffectDemo';
 import UseEffectTimer from '@/components/UseEffectTimer';
+import UseEffectPatterns from '@/components/UseEffectPatterns';
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
           <UseStateCounter />
           <UseEffectDemo />
           <UseEffectTimer />
+          <UseEffectPatterns />
         </main>
       </div>
     </div>
