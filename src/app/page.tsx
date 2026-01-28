@@ -21,7 +21,6 @@ export default function Home() {
         <main className="space-y-8">
           <UseStateCounter />
           <UseEffectDemo />
-          <UseEffectTimer />
           <UseEffectPatterns />
         </main>
       </div>
