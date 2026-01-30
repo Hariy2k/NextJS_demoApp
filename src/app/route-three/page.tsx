@@ -50,7 +50,10 @@ export default function RouteThree() {
   const [city, setCity] = useState('London');
 
   const [users, setUsers] = useState<UserData[]>([]);
-  const [dataLoading, setDataLoading] = useState(false);
+  const [getLoading, setGetLoading] = useState(false);
+  const [postLoading, setPostLoading] = useState(false);
+  const [putLoading, setPutLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const [dataError, setDataError] = useState<string | null>(null);
   const [operationResult, setOperationResult] = useState<string | null>(null);
 
@@ -76,7 +79,7 @@ export default function RouteThree() {
   };
 
   const fetchDatabaseData = async (type: 'users') => {
-    setDataLoading(true);
+    setGetLoading(true);
     setDataError(null);
     setOperationResult(null);
     
@@ -97,12 +100,12 @@ export default function RouteThree() {
     } catch (error) {
       setDataError(error instanceof Error ? error.message : 'An error occurred');
     } finally {
-      setDataLoading(false);
+      setGetLoading(false);
     }
   };
 
   const createData = async (type: 'user' | 'post' | 'todo', data: any) => {
-    setDataLoading(true);
+    setPostLoading(true);
     setDataError(null);
     setOperationResult(null);
     
@@ -131,12 +134,12 @@ export default function RouteThree() {
     } catch (error) {
       setDataError(error instanceof Error ? error.message : 'An error occurred');
     } finally {
-      setDataLoading(false);
+      setPostLoading(false);
     }
   };
 
   const updateData = async (type: 'user' | 'post' | 'todo', id: number, data: any) => {
-    setDataLoading(true);
+    setPutLoading(true);
     setDataError(null);
     setOperationResult(null);
     
@@ -165,12 +168,12 @@ export default function RouteThree() {
     } catch (error) {
       setDataError(error instanceof Error ? error.message : 'An error occurred');
     } finally {
-      setDataLoading(false);
+      setPutLoading(false);
     }
   };
 
   const deleteData = async (type: 'user' | 'post' | 'todo', id: number) => {
-    setDataLoading(true);
+    setDeleteLoading(true);
     setDataError(null);
     setOperationResult(null);
     
@@ -195,7 +198,7 @@ export default function RouteThree() {
     } catch (error) {
       setDataError(error instanceof Error ? error.message : 'An error occurred');
     } finally {
-      setDataLoading(false);
+      setDeleteLoading(false);
     }
   };
 
@@ -284,10 +287,10 @@ export default function RouteThree() {
               <h3 className="font-semibold mb-2">GET Operation - Fetch Users</h3>
               <button 
                 onClick={() => fetchDatabaseData('users')}
-                disabled={dataLoading}
+                disabled={getLoading}
                 className="mb-3 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400"
               >
-                {dataLoading ? 'Loading...' : 'GET /api/database?type=users'}
+                {getLoading ? 'Loading...' : 'GET /api/database?type=users'}
               </button>
               
               <div className="space-y-2 max-h-64 overflow-y-auto">
@@ -322,10 +325,10 @@ export default function RouteThree() {
                     bs: 'synergize solutions'
                   }
                 })}
-                disabled={dataLoading}
+                disabled={postLoading}
                 className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-gray-400"
               >
-                {dataLoading ? 'Loading...' : 'POST /api/database (Create User)'}
+                {postLoading ? 'Loading...' : 'POST /api/database (Create User)'}
               </button>
             </div>
 
@@ -352,10 +355,10 @@ export default function RouteThree() {
                       });
                     }
                   }}
-                  disabled={dataLoading}
+                  disabled={putLoading}
                   className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 disabled:bg-gray-400"
                 >
-                  {dataLoading ? 'Loading...' : 'PUT /api/database (Update User)'}
+                  {putLoading ? 'Loading...' : 'PUT /api/database (Update User)'}
                 </button>
               </div>
               <div className="text-xs text-gray-600">Enter a user ID (1-10) to update</div>
@@ -381,10 +384,10 @@ export default function RouteThree() {
                       deleteData('user', userId);
                     }
                   }}
-                  disabled={dataLoading}
+                  disabled={deleteLoading}
                   className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:bg-gray-400"
                 >
-                  {dataLoading ? 'Loading...' : 'DELETE /api/database (Delete User)'}
+                  {deleteLoading ? 'Loading...' : 'DELETE /api/database (Delete User)'}
                 </button>
               </div>
               <div className="text-xs text-gray-600">Enter a user ID (1-10) to delete</div>
