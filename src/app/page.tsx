@@ -15,7 +15,7 @@ export default function Home() {
           </p>
         </header>
 
-        <main className="grid md:grid-cols-2 gap-8">
+        <main className="grid md:grid-cols-3 gap-8">
           {/* React Hooks Section */}
           <section className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
             <div className="mb-6">
@@ -109,6 +109,53 @@ export default function Home() {
               </svg>
             </Link>
           </section>
+
+          {/* API Integration Section */}
+          <section className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-3">
+                API Integration
+              </h2>
+              <p className="text-gray-600 mb-6">
+                Learn how to build and consume REST APIs with Next.js. 
+                Practice CRUD operations, external API calls, and database connections.
+              </p>
+            </div>
+            
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center text-sm text-gray-600">
+                <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                Weather API Integration (OpenWeatherMap)
+              </div>
+              <div className="flex items-center text-sm text-gray-600">
+                <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                CRUD Operations (GET, POST, PUT, DELETE)
+              </div>
+              <div className="flex items-center text-sm text-gray-600">
+                <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                Mock Database with Real-time Updates
+              </div>
+              <div className="flex items-center text-sm text-gray-600">
+                <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                Error Handling & Loading States
+              </div>
+            </div>
+
+            <Link 
+              href="/route-three"
+              className="inline-flex items-center px-6 py-3 bg-orange-600 text-white font-medium rounded-lg hover:bg-orange-700 transition-colors"
+            >
+              Explore APIs
+              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </section>
         </main>
 
         {/* Quick Navigation */}
@@ -128,6 +175,12 @@ export default function Home() {
               Routing Demo
             </Link>
             <Link 
+              href="/route-three"
+              className="px-4 py-2 bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors text-sm font-medium"
+            >
+              API Integration Demo
+            </Link>
+            <Link 
               href="/route-two/products/laptop"
               className="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors text-sm font-medium"
             >
@@ -135,7 +188,7 @@ export default function Home() {
             </Link>
             <Link 
               href="/route-two/electronics/phone"
-              className="px-4 py-2 bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors text-sm font-medium"
+              className="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-lg hover:bg-indigo-200 transition-colors text-sm font-medium"
             >
               Example: Nested Route
             </Link>
